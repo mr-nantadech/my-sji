@@ -10,3 +10,12 @@ $.fn.getDeptOf = function (empId) {
   }
   return null;
 };
+
+$.fn.getSectionOf = function (empId) {
+  const profile = this;
+  const foundProfile = profile.get().find((emp) => emp.id === empId);
+  if (foundProfile) {
+    return foundProfile.sec || null;
+  }
+  return null;
+};

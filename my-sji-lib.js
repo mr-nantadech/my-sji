@@ -19,3 +19,12 @@ $.fn.getSectionOf = function (empId) {
   }
   return null;
 };
+
+$.fn.getDivOf = function (empId) {
+    const profile = this;
+    const foundProfile = profile.get().find((emp) => emp.id === empId);
+    if (foundProfile) {
+      return foundProfile.div || null;
+    }
+    return null;
+  };

@@ -1,6 +1,6 @@
 //Base on JQuery
 
-//find Department of Employee ID
+// find Department of Employee ID
 // sample $(employeeProfileJson).getDeptOf('15886')
 $.fn.getDeptOf = function (empId) {
   const profile = this;

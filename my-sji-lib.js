@@ -2,13 +2,4 @@
 
 //find Department of Employee ID 
 // sample $('employeeProfileJson').getDeptOf('15886')
-$.fn.getDeptOf = function(empId) {
-    const profile = this;
-    const foundProfile = profile.find(emp => emp.id === empId);
-
-    if (foundProfile) {
-        return foundProfile.dep || null;
-    }
-    
-    return null;
-};
+$.fn.getDeptOf=function(e){const p=this,f=p.find(t=>t.id===e);return f?f.dep||null:null};

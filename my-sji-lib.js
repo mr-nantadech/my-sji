@@ -183,6 +183,7 @@ $.fn.getSectWhoApproverOf = function (empId) {
       .filter(
         (emp) =>
           emp.id !== empId &&
+        emp.div === foundProfile.div &&
           emp.sec === foundProfile.sec &&
           !emp.dep &&
           !emp.uni
@@ -259,6 +260,8 @@ $.fn.getWhoApproverOf = function (empId) {
         .filter(
           (emp) =>
             emp.id !== empId &&
+            emp.div === foundProfile.div &&
+            emp.sec === foundProfile.sec &&
             emp.dep === foundProfile.dep &&
             !emp.uni &&
             dept.includes(emp.job_brand)
@@ -270,6 +273,7 @@ $.fn.getWhoApproverOf = function (empId) {
           .filter(
             (emp) =>
               emp.id !== empId &&
+              emp.div === foundProfile.div &&
               emp.sec === foundProfile.sec &&
               !emp.dep &&
               !emp.uni &&
@@ -304,6 +308,7 @@ $.fn.getWhoApproverOf = function (empId) {
         .filter(
           (emp) =>
             emp.id !== empId &&
+          emp.div === foundProfile.div &&
             emp.sec === foundProfile.sec &&
             !emp.dep &&
             !emp.uni &&

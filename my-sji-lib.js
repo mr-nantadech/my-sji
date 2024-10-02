@@ -78,6 +78,40 @@
  * @property {number|null} [job_brand_level]
  */
 
+
+var unit = [
+  "L0",
+  "L1",
+  "L2",
+  "L3",
+  "L4",
+  "L5",
+  "L6",
+  "L7",
+  "L8",
+  "L9",
+  "S0",
+  "S1",
+  "S2",
+  "S3",
+  "S4",
+  "S5",
+  "S6",
+  "C1",
+  "M1",
+  "M2",
+  "M3",
+  "M4",
+  "M5",
+  "M6",
+  "M7",
+  "M8",
+];
+var dept = ["M9", "M10"];
+var sec = ["M11", "M12"];
+var div = ["M13", "M14"];
+var md = ["M15", "M16"];
+
 // find Department of Employee ID
 // sample $(employeeProfileJson).getDeptOf('15886')
 $.fn.getDeptOf = function (empId) {
@@ -211,39 +245,6 @@ $.fn.getDivtWhoApproverOf = function (empId) {
     },
   };
 };
-
-var unit = [
-  "L0",
-  "L1",
-  "L2",
-  "L3",
-  "L4",
-  "L5",
-  "L6",
-  "L7",
-  "L8",
-  "L9",
-  "S0",
-  "S1",
-  "S2",
-  "S3",
-  "S4",
-  "S5",
-  "S6",
-  "C1",
-  "M1",
-  "M2",
-  "M3",
-  "M4",
-  "M5",
-  "M6",
-  "M7",
-  "M8",
-];
-var dept = ["M9", "M10"];
-var sec = ["M11", "M12"];
-var div = ["M13", "M14"];
-var md = ["M15", "M16"];
 
 $.fn.getWhoApproverOf = function (empId) {
   const profile = this;

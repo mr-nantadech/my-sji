@@ -43,8 +43,8 @@
 
         
         if (allUserData) {
-            var department = $(allUserData).getDeptOf('15886');
-            console.log(department);
+            var test = $(allUserData).getSectWhoApproverOf('15886').profiles();
+            console.log(test);
         }
 
     });

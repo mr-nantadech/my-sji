@@ -21,10 +21,10 @@ $.fn.getSectionOf = function (empId) {
 };
 
 $.fn.getDivOf = function (empId) {
-    const profile = this;
-    const foundProfile = profile.get().find((emp) => emp.id === empId);
-    if (foundProfile) {
-      return foundProfile.div || null;
-    }
-    return null;
-  };
+  const profile = this;
+  const foundProfile = profile.get().find((emp) => emp.id === empId);
+  if (foundProfile) {
+    return foundProfile.div || null;
+  }
+  return null;
+};

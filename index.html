@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<!-- <script src="https://raw.githack.com/mr-nantadech/my-sji/develop/my-sji-lib.js"></script> -->
+
+<!-- <script src="https://cdn.statically.io/gh/mr-nantadech/my-sji/ph1/my-sji-lib.js"></script> -->
+
+<!-- <script src="https://cdn.jsdelivr.net/gh/mr-nantadech/my-sji@1.0.2/my-sji-lib.min.js"></script> -->
+
+<script src="my-sji-lib.js"></script>
+
+
+<script>
+
+    $(document).ready(async function () {
+        console.log("ready!");
+
+        async function loadData() {
+            try {
+                const response = await $.getJSON("alldata.json");
+                return response.data_model;
+            } catch (error) {
+                console.error("Request Failed: ", error);
+                return null;
+            }
+        }
+
+        var allUserData = await loadData();
+
+
+
+        
+        if (allUserData) {
+            var department = $(allUserData).getDeptOf('15886');
+            console.log(department);
+        }
+
+    });
+
+</script>
+
+</html>

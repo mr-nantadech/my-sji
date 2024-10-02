@@ -17,9 +17,9 @@
 
 <!-- <script src="https://cdn.statically.io/gh/mr-nantadech/my-sji/ph1/my-sji-lib.js"></script> -->
 
-<!-- <script src="https://cdn.jsdelivr.net/gh/mr-nantadech/my-sji@1.0.2/my-sji-lib.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/gh/mr-nantadech/my-sji@1.0.4/my-sji-lib.min.js"></script>
 
-<script src="my-sji-lib.js"></script>
+<!-- <script src="my-sji-lib.js"></script> -->
 
 
 <script>
@@ -41,9 +41,9 @@
 
 
 
-        
+
         if (allUserData) {
-            var test = $(allUserData).getSectWhoApproverOf('15886').profiles();
+            var test = $(allUserData).getWhoApproverOf('15886').email_in();
             console.log(test);
         }
 

@@ -69,6 +69,13 @@
  * @property {Date} [updated_at]
  * @property {number} [status]
  * @property {string} [img]
+ * @property {string|null} [job_brand]
+ * @property {string|null} [special_skill]
+ * @property {number|null} [introduce_status]
+ * @property {string|null} [job_brand_id]
+ * @property {string|null} [job_brand_name]
+ * @property {string|null} [job_brand_type]
+ * @property {number|null} [job_brand_level]
  */
 
 // find Department of Employee ID
@@ -107,7 +114,9 @@ $.fn.getDeptWhoApproverOf = function (empId) {
   if (foundProfile) {
     var foundProfileNextLevel = profile
       .get()
-      .filter((emp) => emp.dep === foundProfile.dep && !emp.uni);
+      .filter(
+        (emp) => emp.id !== empId && emp.dep === foundProfile.dep && !emp.uni
+      );
 
     return {
       profiles: function () {
@@ -137,7 +146,13 @@ $.fn.getSectWhoApproverOf = function (empId) {
   if (foundProfile) {
     var foundProfileNextLevel = profile
       .get()
-      .filter((emp) => emp.sec === foundProfile.sec && !emp.dep && !emp.uni);
+      .filter(
+        (emp) =>
+          emp.id !== empId &&
+          emp.sec === foundProfile.sec &&
+          !emp.dep &&
+          !emp.uni
+      );
 
     return {
       profiles: function () {
@@ -169,8 +184,177 @@ $.fn.getDivtWhoApproverOf = function (empId) {
       .get()
       .filter(
         (emp) =>
-          emp.div === foundProfile.div && !emp.sec && !emp.dep && !emp.uni
+          emp.id !== empId &&
+          emp.div === foundProfile.div &&
+          !emp.sec &&
+          !emp.dep &&
+          !emp.uni
       );
+
+    return {
+      profiles: function () {
+        return foundProfileNextLevel.length > 0 ? foundProfileNextLevel : [];
+      },
+      email_in: function () {
+        const profiles = this.profiles();
+        return profiles.length > 0 ? profiles.map((emp) => emp.email_in) : [];
+      },
+    };
+  }
+
+  return {
+    profiles: function () {
+      return [];
+    },
+    email_in: function () {
+      return [];
+    },
+  };
+};
+
+var unit = [
+  "L0",
+  "L1",
+  "L2",
+  "L3",
+  "L4",
+  "L5",
+  "L6",
+  "L7",
+  "L8",
+  "L9",
+  "S0",
+  "S1",
+  "S2",
+  "S3",
+  "S4",
+  "S5",
+  "S6",
+  "C1",
+  "M1",
+  "M2",
+  "M3",
+  "M4",
+  "M5",
+  "M6",
+  "M7",
+  "M8",
+];
+var dept = ["M9", "M10"];
+var sec = ["M11", "M12"];
+var div = ["M13", "M14"];
+var md = ["M15", "M16"];
+
+$.fn.getWhoApproverOf = function (empId) {
+  const profile = this;
+  const foundProfile = profile.get().find((emp) => emp.id === empId);
+
+  if (foundProfile) {
+    var foundProfileNextLevel = [];
+
+    if (unit.includes(foundProfile.job_brand)) {
+      foundProfileNextLevel = profile
+        .get()
+        .filter(
+          (emp) =>
+            emp.id !== empId &&
+            emp.dep === foundProfile.dep &&
+            !emp.uni &&
+            dept.includes(emp.job_brand)
+        );
+
+      if (foundProfileNextLevel.length == 0) {
+        foundProfileNextLevel = profile
+          .get()
+          .filter(
+            (emp) =>
+              emp.id !== empId &&
+              emp.sec === foundProfile.sec &&
+              !emp.dep &&
+              !emp.uni &&
+              sec.includes(emp.job_brand)
+          );
+      }
+
+      if (foundProfileNextLevel.length == 0) {
+        foundProfileNextLevel = profile
+          .get()
+          .filter(
+            (emp) =>
+              emp.id !== empId &&
+              emp.div === foundProfile.div &&
+              !emp.sec &&
+              !emp.dep &&
+              !emp.uni &&
+              div.includes(emp.job_brand)
+          );
+      }
+
+      if (foundProfileNextLevel.length == 0) {
+        foundProfileNextLevel = profile
+          .get()
+          .filter((emp) => emp.id !== empId && md.includes(emp.job_brand));
+      }
+    }
+
+    if (dept.includes(foundProfile.job_brand)) {
+      foundProfileNextLevel = profile
+        .get()
+        .filter(
+          (emp) =>
+            emp.id !== empId &&
+            emp.sec === foundProfile.sec &&
+            !emp.dep &&
+            !emp.uni &&
+            sec.includes(emp.job_brand)
+        );
+
+      if (foundProfileNextLevel.length == 0) {
+        foundProfileNextLevel = profile
+          .get()
+          .filter(
+            (emp) =>
+              emp.id !== empId &&
+              emp.div === foundProfile.div &&
+              !emp.sec &&
+              !emp.dep &&
+              !emp.uni &&
+              div.includes(emp.job_brand)
+          );
+      }
+
+      if (foundProfileNextLevel.length == 0) {
+        foundProfileNextLevel = profile
+          .get()
+          .filter((emp) => emp.id !== empId && md.includes(emp.job_brand));
+      }
+    }
+
+    if (sec.includes(foundProfile.job_brand)) {
+      foundProfileNextLevel = profile
+        .get()
+        .filter(
+          (emp) =>
+            emp.id !== empId &&
+            emp.div === foundProfile.div &&
+            !emp.sec &&
+            !emp.dep &&
+            !emp.uni &&
+            div.includes(emp.job_brand)
+        );
+
+      if (foundProfileNextLevel.length == 0) {
+        foundProfileNextLevel = profile
+          .get()
+          .filter((emp) => emp.id !== empId && md.includes(emp.job_brand));
+      }
+    }
+
+    if (div.includes(foundProfile.job_brand)) {
+      foundProfileNextLevel = profile
+        .get()
+        .filter((emp) => emp.id !== empId && md.includes(emp.job_brand));
+    }
 
     return {
       profiles: function () {

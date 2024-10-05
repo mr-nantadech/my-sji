@@ -183,7 +183,7 @@ $.fn.getSectWhoApproverOf = function (empId) {
       .filter(
         (emp) =>
           emp.id !== empId &&
-        emp.div === foundProfile.div &&
+          emp.div === foundProfile.div &&
           emp.sec === foundProfile.sec &&
           !emp.dep &&
           !emp.uni
@@ -308,7 +308,7 @@ $.fn.getWhoApproverOf = function (empId) {
         .filter(
           (emp) =>
             emp.id !== empId &&
-          emp.div === foundProfile.div &&
+            emp.div === foundProfile.div &&
             emp.sec === foundProfile.sec &&
             !emp.dep &&
             !emp.uni &&
@@ -366,6 +366,24 @@ $.fn.getWhoApproverOf = function (empId) {
       profiles: function () {
         return foundProfileNextLevel.length > 0 ? foundProfileNextLevel : [];
       },
+      basic_profiles: function () {
+        return foundProfileNextLevel.length > 0
+          ? foundProfileNextLevel.map(function (profile) {
+            return {
+              id: profile.id,
+              full_name_en: profile.full_name_en,
+              email_in: profile.email_in,
+              position_name: profile.pos_name_th || profile.pos_name_en,
+              div: profile.div,
+              sec: profile.sec,
+              dep: profile.dep,
+              uni: profile.uni,
+              nickname: profile.nickname,
+              job_brand: profile.job_brand
+            };
+          })
+          : [];
+      },
       email_in: function () {
         const profiles = this.profiles();
         return profiles.length > 0 ? profiles.map((emp) => emp.email_in) : [];
@@ -375,6 +393,9 @@ $.fn.getWhoApproverOf = function (empId) {
 
   return {
     profiles: function () {
+      return [];
+    },
+    basic_profiles: function () {
       return [];
     },
     email_in: function () {

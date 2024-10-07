@@ -105,9 +105,9 @@
 
                 $('#thisUid').html(userId)
 
-                var approverProfile = $(allUserData).getWhoApproverOf(userId).profiles();
-                var approverEmail = $(allUserData).getWhoApproverOf(userId).email_in();
-                var approverBasicProfile = $(allUserData).getWhoApproverOf(userId).basic_profiles();
+                var approverProfile = $(allUserData).sji().getWhoApproverOf(userId).profiles();
+                var approverEmail = $(allUserData).sji().getWhoApproverOf(userId).email_in();
+                var approverBasicProfile = $(allUserData).sji().getWhoApproverOf(userId).basic_profiles();
 
 
                 if ($('#checkProfile').is(':checked')) {

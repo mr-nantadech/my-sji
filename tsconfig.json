@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es2016",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "module": "ESNext",           
+        "moduleResolution": "node",
+        "types": [
+            "jquery"
+        ],
+        "skipLibCheck": true,
+        "noEmitOnError": true,
+        "removeComments": true,       
+        "importHelpers": true       
+    }
+}

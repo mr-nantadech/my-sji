@@ -14,8 +14,9 @@ This library requires Node.js and the TypeScript compiler.
 
 ## Contributing Changes
 
-1. **Commit your changes:** `git commit -m "Your descriptive commit message"`
-2. **Push your branch:** `git push --set-upstream origin <your-branch-name>`
+1. **Build the library:** Run `npm run build` to compile your changes.  This will update the `dist/my-sji-lib.js` file.
+2. **Commit your changes:**  Use `git commit -m "Your descriptive commit message"` to commit both your TypeScript changes *and* the updated JavaScript files in the `dist` directory.
+3. **Push your branch:** `git push --set-upstream origin <your-branch-name>` to push your changes to the remote repository.
 
 ## Releasing a New Version (Tagged Release)
 

@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "tsc my-sji-lib.ts && node clean.js my-sji-lib.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.5.32"
+  }
+}
